@@ -21,7 +21,7 @@ from datetime import datetime
 from openpyxl import load_workbook
 
 # ── CONFIG — edit these ───────────────────────────────────────────────────────
-GITHUB_REPO  = "MatthewAMahoney/dhl-mahoney-dashboard"  # your GitHub repo
+GITHUB_REPO  = "Gofetch-11/dhl-mahoney-dashboard"  # your GitHub repo
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")       # set as env variable
 XLSX_PATH    = r"C:\Users\MatthewAMahoney\Dropbox\DHLSD - NEW Job Tickets\DHL_Mahoney_Shipment_Database.xlsx"
 # ─────────────────────────────────────────────────────────────────────────────
