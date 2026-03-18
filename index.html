@@ -74,6 +74,9 @@ td.center{text-align:center;}
 .route-cell .flt{color:var(--muted);font-size:9px;}
 .pdf-icon{font-size:14px;text-decoration:none;}
 .no-results{text-align:center;padding:60px;color:var(--muted);font-family:var(--mono);}
+.stacked{white-space:normal;line-height:1.6;max-width:180px;vertical-align:top;}
+.stacked .line1{color:var(--text);font-weight:500;}
+.stacked .line2{color:var(--muted);font-size:10px;}
 
 /* PANEL */
 .panel-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:200;backdrop-filter:blur(3px);}
@@ -125,7 +128,7 @@ td.center{text-align:center;}
     <div class="stat-chip"><div class="dot dot-import"></div>IMPORT <span class="num" id="cnt-import">—</span></div>
     <div class="stat-chip"><div class="dot dot-export"></div>EXPORT <span class="num" id="cnt-export">—</span></div>
     <div class="stat-chip"><div class="dot dot-domestic"></div>DOMESTIC <span class="num" id="cnt-domestic">—</span></div>
-    <div class="updated">Updated 2026-03-18 04:27</div>
+    <div class="updated">Updated 2026-03-18 04:35</div>
   </div>
 </div>
 
@@ -149,8 +152,8 @@ td.center{text-align:center;}
   <tr>
     <th class="th-group" colspan="4">JOB INFO</th>
     <th class="th-group" colspan="2">CUSTOMER</th>
-    <th class="th-group" colspan="4">SHIPPER</th>
-    <th class="th-group" colspan="4">CONSIGNEE</th>
+    <th class="th-group" colspan="1">SHIPPER</th>
+    <th class="th-group" colspan="1">CONSIGNEE</th>
     <th class="th-group" colspan="3">FLIGHT</th>
     <th class="th-group" colspan="3">PACKAGE</th>
     <th class="th-group" colspan="2">NOTES</th>
@@ -164,13 +167,7 @@ td.center{text-align:center;}
     <th data-col="cust">CUSTOMER</th>
     <th data-col="desc">DESCRIPTION</th>
     <th data-col="ship_co">SHIPPER</th>
-    <th data-col="ship_addr">ADDRESS</th>
-    <th data-col="ship_city">CITY</th>
-    <th data-col="ship_ctry">CTRY</th>
     <th data-col="con_co">CONSIGNEE</th>
-    <th data-col="con_addr">ADDRESS</th>
-    <th data-col="con_city">CITY</th>
-    <th data-col="con_ctry">CTRY</th>
     <th data-col="mawb">MAWB</th>
     <th data-col="flight">FLIGHT</th>
     <th data-col="dep_apt">ROUTE</th>
@@ -238,14 +235,8 @@ function render(){
     <td>${badge(j.direction)}</td>
     <td title="${esc(j.cust)}">${trunc(esc(j.cust),22)}</td>
     <td title="${esc(j.desc)}">${trunc(esc(j.desc),28)}</td>
-    <td title="${esc(j.ship_co)}">${trunc(esc(j.ship_co),20)}</td>
-    <td title="${esc(j.ship_addr)}">${trunc(esc(j.ship_addr),20)}</td>
-    <td title="${esc(j.ship_city)}">${trunc(esc(j.ship_city),16)}</td>
-    <td class="mono">${esc(j.ship_ctry)}</td>
-    <td title="${esc(j.con_co)}">${trunc(esc(j.con_co),20)}</td>
-    <td title="${esc(j.con_addr)}">${trunc(esc(j.con_addr),20)}</td>
-    <td title="${esc(j.con_city)}">${trunc(esc(j.con_city),16)}</td>
-    <td class="mono">${esc(j.con_ctry)}</td>
+    <td style="white-space:normal;line-height:1.5;max-width:180px">${[j.ship_co,j.ship_addr,j.ship_city,j.ship_ctry].filter(x=>x&&x.trim()).map(x=>esc(x.trim())).join('<br>')}</td>
+    <td style="white-space:normal;line-height:1.5;max-width:180px">${[j.con_co,j.con_addr,j.con_city,j.con_ctry].filter(x=>x&&x.trim()).map(x=>esc(x.trim())).join('<br>')}</td>
     <td class="mono" style="font-size:10px">${esc(j.mawb)}</td>
     <td class="mono" style="font-size:10px">${esc(j.flight)}</td>
     <td><span class="route-cell"><span class="apts">${esc(j.dep_apt)}<span class="arr">→</span>${esc(j.arr_apt)}</span></span></td>
@@ -301,14 +292,14 @@ function openPanel(ticket){
     <div class="psec">
       <div class="psec-title">Shipper → Consignee</div>
       <div class="pgrid">
-        <div class="pfield"><label>Shipper</label><div class="val">${esc(j.ship_co)||'—'}</div></div>
-        <div class="pfield"><label>Consignee</label><div class="val">${esc(j.con_co)||'—'}</div></div>
-        <div class="pfield"><label>Address</label><div class="val">${esc(j.ship_addr)||'—'}</div></div>
-        <div class="pfield"><label>Address</label><div class="val">${esc(j.con_addr)||'—'}</div></div>
-        <div class="pfield"><label>City</label><div class="val">${esc(j.ship_city)||'—'}</div></div>
-        <div class="pfield"><label>City</label><div class="val">${esc(j.con_city)||'—'}</div></div>
-        <div class="pfield"><label>Country</label><div class="val mono">${esc(j.ship_ctry)||'—'}</div></div>
-        <div class="pfield"><label>Country</label><div class="val mono">${esc(j.con_ctry)||'—'}</div></div>
+        <div class="pfield">
+          <label>Shipper</label>
+          <div class="val">${[j.ship_co,j.ship_addr,j.ship_city,j.ship_ctry].filter(x=>x&&x.trim()).map((x,i)=>`<span style="display:block;${i>0?'color:var(--muted);font-size:11px':''}">${esc(x.trim())}</span>`).join('')||'—'}</div>
+        </div>
+        <div class="pfield">
+          <label>Consignee</label>
+          <div class="val">${[j.con_co,j.con_addr,j.con_city,j.con_ctry].filter(x=>x&&x.trim()).map((x,i)=>`<span style="display:block;${i>0?'color:var(--muted);font-size:11px':''}">${esc(x.trim())}</span>`).join('')||'—'}</div>
+        </div>
       </div>
     </div>
     <div class="psec">
