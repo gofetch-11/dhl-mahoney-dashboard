@@ -10,15 +10,16 @@
 :root{--bg:#0a0c10;--surface:#111318;--border:#1e2330;--border2:#2a3045;--text:#e2e8f0;--muted:#64748b;--accent:#38bdf8;--import:#38bdf8;--export:#4ade80;--domestic:#fb923c;--red:#f87171;--yellow:#fbbf24;--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13px;min-height:100vh;}
-.header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;gap:20px;height:56px;position:sticky;top:0;z-index:100;}
-.logo-box{background:#FFCC00;color:#D40511;font-family:var(--mono);font-weight:600;font-size:15px;padding:3px 8px;border-radius:3px;letter-spacing:1px;}
-.logo-text{font-size:11px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;line-height:1.3;}
-.logo-text strong{display:block;color:var(--text);font-size:13px;letter-spacing:0.5px;} .logo-text span{display:block;color:var(--muted);font-size:11px;}
-.header-right{margin-left:auto;display:flex;align-items:center;gap:16px;}
+.header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;gap:20px;height:64px;position:sticky;top:0;z-index:100;}
+.logo-box{background:#FFCC00;color:#D40511;font-family:var(--mono);font-weight:600;font-size:15px;padding:4px 10px;border-radius:3px;letter-spacing:1px;flex-shrink:0;}
+.logo-text{line-height:1.4;}
+.logo-text strong{display:block;color:var(--text);font-size:14px;font-weight:600;}
+.logo-text span{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:1.5px;}
+.header-right{margin-left:auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
 .stat-chip{background:var(--bg);border:1px solid var(--border2);border-radius:6px;padding:4px 12px;font-family:var(--mono);font-size:11px;color:var(--muted);}
 .stat-chip span{color:var(--accent);font-weight:600;}
 .updated{font-family:var(--mono);font-size:10px;color:var(--muted);}
-.toolbar{padding:12px 24px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--border);background:var(--bg);position:sticky;top:56px;z-index:99;}
+.toolbar{padding:12px 24px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--border);background:var(--bg);position:sticky;top:64px;z-index:99;}
 .search-wrap{position:relative;flex:1;min-width:220px;max-width:400px;}
 .search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px;pointer-events:none;}
 #search{width:100%;background:var(--surface);border:1px solid var(--border2);border-radius:6px;color:var(--text);font-family:var(--mono);font-size:12px;padding:7px 12px 7px 32px;outline:none;transition:border-color .15s;}
@@ -35,12 +36,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
 .count-badge span{color:var(--accent);font-weight:600;}
 .table-wrap{overflow-x:auto;padding:0 24px 80px;}
 table{width:100%;border-collapse:collapse;margin-top:12px;min-width:1100px;}
-thead th{background:var(--surface);border-bottom:2px solid var(--border2);padding:8px 12px;text-align:left;font-family:var(--mono);font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px;white-space:nowrap;cursor:pointer;user-select:none;position:sticky;top:97px;z-index:10;}
+thead th{background:var(--surface);border-bottom:2px solid var(--border2);padding:8px 12px;text-align:left;font-family:var(--mono);font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px;white-space:nowrap;cursor:pointer;user-select:none;position:sticky;top:105px;z-index:10;}
 thead th:hover{color:var(--accent);}
 thead th.sorted{color:var(--accent);}
 tbody tr{border-bottom:1px solid var(--border);cursor:pointer;transition:background .1s;}
 tbody tr:hover{background:rgba(255,255,255,.03);}
-tbody tr.selected{background:rgba(56,189,248,.07);border-color:rgba(56,189,248,.2);}
+tbody tr.selected{background:rgba(56,189,248,.07);}
 td{padding:9px 12px;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px;}
 td.mono{font-family:var(--mono);}
 .ticket-link{font-family:var(--mono);font-weight:600;color:var(--accent);text-decoration:none;font-size:13px;}
@@ -52,23 +53,25 @@ td.mono{font-family:var(--mono);}
 .route{font-family:var(--mono);font-size:11px;color:var(--muted);}
 .route strong{color:var(--text);}
 .route .arrow{color:var(--accent);margin:0 3px;}
+.pdf-link{color:var(--accent);font-size:15px;text-decoration:none;}
+.pdf-link:hover{opacity:.7;}
 .no-results{text-align:center;padding:60px 0;color:var(--muted);font-family:var(--mono);font-size:13px;}
 .panel-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;backdrop-filter:blur(2px);}
 .panel-overlay.open{display:block;}
-.panel{position:fixed;top:0;right:-520px;width:520px;height:100vh;background:var(--surface);border-left:1px solid var(--border2);overflow-y:auto;z-index:201;transition:right .25s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;}
+.panel{position:fixed;top:0;right:-520px;width:520px;height:100vh;background:var(--surface);border-left:1px solid var(--border2);overflow-y:auto;z-index:201;transition:right .25s cubic-bezier(.4,0,.2,1);}
 .panel.open{right:0;}
-.panel-header{padding:18px 20px 14px;border-bottom:1px solid var(--border);background:var(--bg);display:flex;align-items:flex-start;gap:12px;flex-shrink:0;position:sticky;top:0;z-index:10;}
+.panel-header{padding:18px 20px 14px;border-bottom:1px solid var(--border);background:var(--bg);display:flex;align-items:flex-start;gap:12px;position:sticky;top:0;z-index:10;}
 .panel-ticket{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--accent);line-height:1;}
 .panel-cust{font-size:11px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.5px;}
-.panel-close{margin-left:auto;background:none;border:1px solid var(--border2);border-radius:6px;color:var(--muted);cursor:pointer;padding:6px 10px;font-size:16px;line-height:1;flex-shrink:0;transition:all .15s;}
+.panel-close{margin-left:auto;background:none;border:1px solid var(--border2);border-radius:6px;color:var(--muted);cursor:pointer;padding:6px 10px;font-size:16px;line-height:1;transition:all .15s;}
 .panel-close:hover{border-color:var(--red);color:var(--red);}
-.panel-body{padding:16px 20px;flex:1;}
+.panel-body{padding:16px 20px;}
 .panel-section{margin-bottom:18px;}
 .panel-section-title{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--muted);padding-bottom:8px;border-bottom:1px solid var(--border);margin-bottom:10px;}
 .panel-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .panel-field label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);display:block;margin-bottom:2px;}
 .panel-field .val{font-size:12px;color:var(--text);line-height:1.4;word-break:break-word;white-space:normal;}
-.panel-field .val.mono{font-family:var(--mono);font-size:12px;}
+.panel-field .val.mono{font-family:var(--mono);}
 .panel-field .val.accent{color:var(--accent);font-weight:600;font-family:var(--mono);}
 .panel-field.full{grid-column:1/-1;}
 .route-diagram{display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin:10px 0;font-family:var(--mono);}
@@ -80,25 +83,28 @@ td.mono{font-family:var(--mono);}
 .route-line .line{width:100%;height:1px;background:linear-gradient(to right,var(--border2),var(--accent),var(--border2));position:relative;}
 .route-line .line::after{content:'▶';position:absolute;right:-4px;top:-6px;font-size:9px;color:var(--accent);}
 .special-box{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.2);border-radius:6px;padding:10px 12px;font-size:12px;color:var(--yellow);line-height:1.5;white-space:normal;word-break:break-word;}
+.pdf-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.3);border-radius:6px;padding:10px 16px;color:var(--accent);font-family:var(--mono);font-size:12px;text-decoration:none;font-weight:600;transition:all .15s;}
+.pdf-btn:hover{background:rgba(56,189,248,.2);}
 </style>
 </head>
 <body>
 <div class="header">
-  <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
-    <div class="logo-box">DHL</div>
-    <div class="logo-text"><strong>Mahoney Express Inc</strong><span>SameDay NFO Dashboard</span></div>
+  <div class="logo-box">DHL</div>
+  <div class="logo-text">
+    <strong>Mahoney Express Inc</strong>
+    <span>SameDay NFO Dashboard</span>
   </div>
   <div class="header-right">
     <div class="stat-chip">IMPORT <span id="cnt-import">—</span></div>
     <div class="stat-chip">EXPORT <span id="cnt-export">—</span></div>
     <div class="stat-chip">DOMESTIC <span id="cnt-domestic">—</span></div>
-    <div class="updated">Updated 2026-03-18 03:11</div>
+    <div class="updated">Updated 2026-03-18 03:16</div>
   </div>
 </div>
 <div class="toolbar">
   <div class="search-wrap">
     <span class="search-icon">🔍</span>
-    <input id="search" type="text" placeholder="Search ticket, MAWB, customer, description, reference…">
+    <input id="search" type="text" placeholder="Search ticket, MAWB, customer, description…">
   </div>
   <div class="filters">
     <button class="filter-btn active" data-dir="ALL">All</button>
@@ -111,16 +117,16 @@ td.mono{font-family:var(--mono);}
 <div class="table-wrap">
   <table id="main-table">
     <thead><tr>
-      <th data-col="ticket">TICKET<span class="sort-arrow">↕</span></th>
-      <th data-col="date">DATE<span class="sort-arrow">↕</span></th>
-      <th data-col="direction">DIR<span class="sort-arrow">↕</span></th>
-      <th data-col="cust">CUSTOMER<span class="sort-arrow">↕</span></th>
-      <th data-col="desc">DESCRIPTION<span class="sort-arrow">↕</span></th>
-      <th data-col="mawb">MAWB<span class="sort-arrow">↕</span></th>
-      <th data-col="flight">ROUTE<span class="sort-arrow">↕</span></th>
-      <th data-col="wgt">WEIGHT<span class="sort-arrow">↕</span></th>
-      <th data-col="deadline">DEADLINE<span class="sort-arrow">↕</span></th>
-      <th data-col="special">NOTES<span class="sort-arrow">↕</span></th>
+      <th data-col="ticket">TICKET</th>
+      <th data-col="date">DATE</th>
+      <th data-col="direction">DIR</th>
+      <th data-col="cust">CUSTOMER</th>
+      <th data-col="desc">DESCRIPTION</th>
+      <th data-col="mawb">MAWB</th>
+      <th data-col="flight">ROUTE</th>
+      <th data-col="wgt">WEIGHT</th>
+      <th data-col="deadline">DEADLINE</th>
+      <th data-col="special">NOTES</th>
       <th>PDF</th>
     </tr></thead>
     <tbody id="tbody"></tbody>
@@ -136,7 +142,7 @@ td.mono{font-family:var(--mono);}
   <div class="panel-body" id="panel-body"></div>
 </div>
 <script>
-const DATA=[{"ticket": "3015379", "date": "10-22-2022", "time": "07:00", "direction": "DOMESTIC", "cust": "GE HEALTHCARE", "desc": "MEDICAL EQUIPMENT", "ref": "105883988", "bol": "", "vehicle": "", "svc": "DRIVE", "ship_co": "GE HEALTHCARE C/O UPS-SCS U00", "ship_addr": "775 EAST DRIVE", "ship_city": "C A R O L S T R E A M , IL 60188", "ship_ctry": "US", "con_co": "OSF HEALTHCARE SYSTEM", "con_addr": "5666 E STATE ST", "con_city": "5666 E STATE ST", "con_ctry": "US", "mawb": "", "airline": "", "flight": "", "dep_apt": "", "arr_apt": "", "dep_time": "", "arr_time": "", "pcs": "1", "wgt": "30 LBS", "dims": "40 X 15 X 15 IN", "special": "", "miles": "58", "dropbox_link": ""}, {"ticket": "3016602", "date": "12-11-2022", "time": "22:15", "direction": "DOMESTIC", "cust": "GE HEALTHCARE", "desc": "MEDICAL EQUIPMENT", "ref": "105958867", "bol": "", "vehicle": "", "svc": "NFO", "ship_co": "GE HEALTHCARE C/O UPS-SCS U00", "ship_addr": "775 EAST DRIVE", "ship_city": "C A R O L S T R E A M , IL 60188", "ship_ctry": "US", "con_co": "BAPTIST MEDICAL CENTER SOUTH", "con_addr": "14550 OLD SAINT AUGUSTINE RD", "con_city": "14550 OLD SAINT AUGUSTINE RD", "con_ctry": "US", "mawb": "", "airline": "", "flight": "", "dep_apt": "", "arr_apt": "", "dep_time": "", "arr_time": "", "pcs": "1", "wgt": "10 LBS", "dims": "10 X 9 X 4 IN", "special": "", "miles": "26", "dropbox_link": ""}, {"ticket": "3016671", "date": "12-14-2022", "time": "16:57", "direction": "DOMESTIC", "cust": "GE HEALTHCARE", "desc": "MEDICAL EQUIPMENT", "ref": "800296690", "bol": "", "vehicle": "", "svc": "NFO", "ship_co": "GE HEALTHCARE C/O UPS-SCS U00", "ship_addr": "775 EAST DRIVE", "ship_city": "C A R O L S T R E A M , IL 60188", "ship_ctry": "US", "con_co": "WEST GEORGIA HEALTH PHYSICIANS", "con_addr": "1514 VERNON RD", "con_city": "1514 VERNON RD", "con_ctry": "US", "mawb": "", "airline": "", "flight": "", "dep_apt": "", "arr_apt": "", "dep_time": "", "arr_time": "", "pcs": "1", "wgt": "40 LBS", "dims": "16 X 11 X 22 IN", "special": "", "miles": "20", "dropbox_link": ""}, {"ticket": "3016954", "date": "12-24-2022", "time": "13:59", "direction": "DOMESTIC", "cust": "GE HEALTHCARE", "desc": "MEDICAL EQUIPMENT", "ref": "105979135", "bol": "", "vehicle": "", "svc": "NFO", "ship_co": "GE HEALTHCARE C/O UPS-SCS U00", "ship_addr": "775 EAST DRIVE", "ship_city": "C A R O L S T R E A M , IL 60188", "ship_ctry": "US", "con_co": "GE HEALTHCARE", "con_addr": "5325 FLORENTINE CT", "con_city": "5325 FLORENTINE CT", "con_ctry": "US", "mawb": "", "airline": "", "flight": "", "dep_apt": "", "arr_apt": "", "dep_time": "", "arr_time": "", "pcs": "1", "wgt": "1 LBS", "dims": "24 X 7 X 2 IN", "special": "", "miles": "26", "dropbox_link": ""}];
+const DATA=[{"ticket": "3015379", "date": "10-22-2022", "time": "07:00", "direction": "DOMESTIC", "cust": "GE HEALTHCARE", "desc": "MEDICAL EQUIPMENT", "ref": "105883988", "bol": "", "vehicle": "", "svc": "DRIVE", "ship_co": "GE HEALTHCARE C/O UPS-SCS U00", "ship_addr": "775 EAST DRIVE", "ship_city": "C A R O L S T R E A M , IL 60188", "ship_ctry": "US", "con_co": "OSF HEALTHCARE SYSTEM", "con_addr": "5666 E STATE ST", "con_city": "5666 E STATE ST", "con_ctry": "US", "mawb": "", "airline": "", "flight": "", "dep_apt": "", "arr_apt": "", "dep_time": "", "arr_time": "", "pcs": "1", "wgt": "30 LBS", "dims": "40 X 15 X 15 IN", "special": "", "miles": "58", "dropbox_link": ""}, {"ticket": "3016602", "date": "12-11-2022", "time": "22:15", "direction": "DOMESTIC", "cust": "GE HEALTHCARE", "desc": "MEDICAL EQUIPMENT", "ref": "105958867", "bol": "", "vehicle": "", "svc": "NFO", "ship_co": "GE HEALTHCARE C/O UPS-SCS U00", "ship_addr": "775 EAST DRIVE", "ship_city": "C A R O L S T R E A M , IL 60188", "ship_ctry": "US", "con_co": "BAPTIST MEDICAL CENTER SOUTH", "con_addr": "14550 OLD SAINT AUGUSTINE RD", "con_city": "14550 OLD SAINT AUGUSTINE RD", "con_ctry": "US", "mawb": "", "airline": "", "flight": "", "dep_apt": "", "arr_apt": "", "dep_time": "", "arr_time": "", "pcs": "1", "wgt": "10 LBS", "dims": "10 X 9 X 4 IN", "special": "", "miles": "26", "dropbox_link": ""}, {"ticket": "3016671", "date": "12-14-2022", "time": "16:57", "direction": "DOMESTIC", "cust": "GE HEALTHCARE", "desc": "MEDICAL EQUIPMENT", "ref": "800296690", "bol": "", "vehicle": "", "svc": "NFO", "ship_co": "GE HEALTHCARE C/O UPS-SCS U00", "ship_addr": "775 EAST DRIVE", "ship_city": "C A R O L S T R E A M , IL 60188", "ship_ctry": "US", "con_co": "WEST GEORGIA HEALTH PHYSICIANS", "con_addr": "1514 VERNON RD", "con_city": "1514 VERNON RD", "con_ctry": "US", "mawb": "", "airline": "", "flight": "", "dep_apt": "", "arr_apt": "", "dep_time": "", "arr_time": "", "pcs": "1", "wgt": "40 LBS", "dims": "16 X 11 X 22 IN", "special": "", "miles": "20", "dropbox_link": ""}, {"ticket": "3016954", "date": "12-24-2022", "time": "13:59", "direction": "DOMESTIC", "cust": "GE HEALTHCARE", "desc": "MEDICAL EQUIPMENT", "ref": "105979135", "bol": "", "vehicle": "", "svc": "NFO", "ship_co": "GE HEALTHCARE C/O UPS-SCS U00", "ship_addr": "775 EAST DRIVE", "ship_city": "C A R O L S T R E A M , IL 60188", "ship_ctry": "US", "con_co": "GE HEALTHCARE", "con_addr": "5325 FLORENTINE CT", "con_city": "5325 FLORENTINE CT", "con_ctry": "US", "mawb": "", "airline": "", "flight": "", "dep_apt": "", "arr_apt": "", "dep_time": "", "arr_time": "", "pcs": "1", "wgt": "1 LBS", "dims": "24 X 7 X 2 IN", "special": "", "miles": "26", "dropbox_link": ""}, {"ticket": "3016975", "date": "12-25-2022", "time": "05:30", "direction": "DOMESTIC", "cust": "GE HEALTHCARE", "desc": "MEDICAL EQUIPMENT", "ref": "105979264", "bol": "", "vehicle": "", "svc": "DRIVE", "ship_co": "GE HEALTHCARE C/O UPS-SCS U00", "ship_addr": "775 EAST DRIVE", "ship_city": "C A R O L S T R E A M , IL 60188", "ship_ctry": "US", "con_co": "OHIOHEALTH PICKERINGTON", "con_addr": "1010 REFUGEE RD", "con_city": "1010 REFUGEE RD", "con_ctry": "US", "mawb": "", "airline": "", "flight": "", "dep_apt": "", "arr_apt": "", "dep_time": "", "arr_time": "", "pcs": "3", "wgt": "448 LBS", "dims": "38 X 27 X 24 IN", "special": "", "miles": "355", "dropbox_link": ""}];
 let activeDir='ALL',searchQ='',sortCol='date',sortAsc=false,selected=null;
 const counts={};
 DATA.forEach(j=>counts[j.direction]=(counts[j.direction]||0)+1);
@@ -151,7 +157,7 @@ function filtered(){
     if(activeDir!=='ALL'&&j.direction!==activeDir)return false;
     if(!searchQ)return true;
     const q=searchQ.toLowerCase();
-    return['ticket','cust','desc','ref','mawb','flight','ship_co','con_co','special','bol','dep_apt','arr_apt','ship_city','con_city'].some(k=>(j[k]||'').toLowerCase().includes(q));
+    return['ticket','cust','desc','ref','mawb','flight','ship_co','con_co','special','bol','dep_apt','arr_apt'].some(k=>(j[k]||'').toLowerCase().includes(q));
   });
   rows.sort((a,b)=>{let va=a[sortCol]||'',vb=b[sortCol]||'';return sortAsc?va.localeCompare(vb):vb.localeCompare(va);});
   return rows;
@@ -163,7 +169,7 @@ function render(){
   if(!rows.length){tbody.innerHTML='';document.getElementById('no-results').style.display='block';return;}
   document.getElementById('no-results').style.display='none';
   tbody.innerHTML=rows.map(j=>`<tr data-ticket="${j.ticket}" class="${selected===j.ticket?'selected':''}">
-    <td class="mono" style="font-weight:600"><a class="ticket-link" href="#" onclick="openPanel('${j.ticket}');return false;">${esc(j.ticket)}</a></td>
+    <td class="mono"><a class="ticket-link" href="#" onclick="openPanel('${j.ticket}');return false;">${esc(j.ticket)}</a></td>
     <td class="mono">${esc(j.date)}</td>
     <td>${badge(j.direction)}</td>
     <td title="${esc(j.cust)}">${esc(j.cust)}</td>
@@ -173,7 +179,7 @@ function render(){
     <td class="mono">${esc(j.wgt)}</td>
     <td class="mono">${esc(j.deadline||'')}</td>
     <td title="${esc(j.special)}" style="max-width:180px;color:var(--muted);font-size:11px">${esc((j.special||'').substring(0,40))}${j.special&&j.special.length>40?'…':''}</td>
-    <td style="text-align:center">${j.dropbox_link?`<a href="${j.dropbox_link}" target="_blank" style="color:var(--accent);font-size:13px;text-decoration:none;" title="Open PDF">📄</a>`:'—'}</td>
+    <td style="text-align:center">${j.dropbox_link?`<a class="pdf-link" href="${j.dropbox_link}" target="_blank" title="Open PDF">📄</a>`:'—'}</td>
   </tr>`).join('');
 }
 document.querySelectorAll('thead th[data-col]').forEach(th=>{
@@ -182,7 +188,6 @@ document.querySelectorAll('thead th[data-col]').forEach(th=>{
     if(sortCol===col)sortAsc=!sortAsc;else{sortCol=col;sortAsc=true;}
     document.querySelectorAll('thead th').forEach(t=>t.classList.remove('sorted'));
     th.classList.add('sorted');
-    th.querySelector('.sort-arrow').textContent=sortAsc?' ↑':' ↓';
     render();
   });
 });
@@ -205,44 +210,44 @@ function openPanel(ticket){
     <div class="panel-section"><div class="panel-section-title">Job Information</div>
     <div class="panel-grid">
       <div class="panel-field"><label>Direction</label><div class="val">${badge(j.direction)}</div></div>
-      <div class="panel-field"><label>Service</label><div class="val mono">NFO</div></div>
+      <div class="panel-field"><label>Service</label><div class="val mono">${esc(j.svc)||'NFO'}</div></div>
       <div class="panel-field"><label>Ready Date</label><div class="val mono accent">${esc(j.date)} ${esc(j.time)}</div></div>
-      <div class="panel-field"><label>Deadline</label><div class="val mono" style="color:var(--yellow)">${esc(j.deadline||'')}</div></div>
+      <div class="panel-field"><label>Deadline</label><div class="val mono" style="color:var(--yellow)">${esc(j.deadline||'—')}</div></div>
       <div class="panel-field full"><label>Description</label><div class="val">${esc(j.desc)}</div></div>
       <div class="panel-field"><label>Reference #</label><div class="val mono">${esc(j.ref)||'—'}</div></div>
       <div class="panel-field"><label>BOL / Temp</label><div class="val mono">${esc(j.bol)||'—'}</div></div>
       <div class="panel-field"><label>Vehicle</label><div class="val mono">${esc(j.vehicle)||'—'}</div></div>
       <div class="panel-field"><label>Miles</label><div class="val mono">${esc(j.miles)||'—'}</div></div>
-      <div class="panel-field"><label>Pieces</label><div class="val mono">${esc(j.pcs)}</div></div>
-      <div class="panel-field"><label>Weight</label><div class="val mono">${esc(j.wgt)}</div></div>
-      <div class="panel-field full"><label>Dimensions</label><div class="val mono">${esc(j.dims)}</div></div>
+      <div class="panel-field"><label>Pieces</label><div class="val mono">${esc(j.pcs)||'—'}</div></div>
+      <div class="panel-field"><label>Weight</label><div class="val mono">${esc(j.wgt)||'—'}</div></div>
+      <div class="panel-field full"><label>Dimensions</label><div class="val mono">${esc(j.dims)||'—'}</div></div>
     </div></div>
     <div class="panel-section"><div class="panel-section-title">Flight Routing</div>
     <div class="route-diagram">
-      <div class="apt-box"><div class="apt-code">${esc(j.dep_apt)}</div><div class="apt-label">Origin</div></div>
+      <div class="apt-box"><div class="apt-code">${esc(j.dep_apt)||'—'}</div><div class="apt-label">Origin</div></div>
       <div class="route-line"><div class="flt">${esc(j.airline)} ${esc(j.flight)}</div><div class="line"></div></div>
-      <div class="apt-box"><div class="apt-code">${esc(j.arr_apt)}</div><div class="apt-label">Destination</div></div>
+      <div class="apt-box"><div class="apt-code">${esc(j.arr_apt)||'—'}</div><div class="apt-label">Destination</div></div>
     </div>
     <div class="panel-grid" style="margin-top:10px">
       <div class="panel-field"><label>MAWB</label><div class="val mono accent">${esc(j.mawb)||'—'}</div></div>
-      <div class="panel-field"><label>Airline</label><div class="val mono">${esc(j.airline)}</div></div>
+      <div class="panel-field"><label>Airline</label><div class="val mono">${esc(j.airline)||'—'}</div></div>
       <div class="panel-field"><label>Dep Time</label><div class="val mono">${esc(j.dep_time)||'—'}</div></div>
       <div class="panel-field"><label>Arr Time</label><div class="val mono">${esc(j.arr_time)||'—'}</div></div>
     </div></div>
     <div class="panel-section"><div class="panel-section-title">Shipper (Pickup)</div>
     <div class="panel-grid">
-      <div class="panel-field full"><label>Company</label><div class="val">${esc(j.ship_co)}</div></div>
-      <div class="panel-field full"><label>Address</label><div class="val">${esc(j.ship_addr)}</div></div>
-      <div class="panel-field full"><label>City / Country</label><div class="val">${esc(j.ship_city)}</div></div>
+      <div class="panel-field full"><label>Company</label><div class="val">${esc(j.ship_co)||'—'}</div></div>
+      <div class="panel-field full"><label>Address</label><div class="val">${esc(j.ship_addr)||'—'}</div></div>
+      <div class="panel-field full"><label>City / Country</label><div class="val">${esc(j.ship_city)||'—'}</div></div>
     </div></div>
     <div class="panel-section"><div class="panel-section-title">Consignee (Delivery)</div>
     <div class="panel-grid">
-      <div class="panel-field full"><label>Company</label><div class="val">${esc(j.con_co)}</div></div>
-      <div class="panel-field full"><label>Address</label><div class="val">${esc(j.con_addr)}</div></div>
-      <div class="panel-field full"><label>City / Country</label><div class="val">${esc(j.con_city)}</div></div>
+      <div class="panel-field full"><label>Company</label><div class="val">${esc(j.con_co)||'—'}</div></div>
+      <div class="panel-field full"><label>Address</label><div class="val">${esc(j.con_addr)||'—'}</div></div>
+      <div class="panel-field full"><label>City / Country</label><div class="val">${esc(j.con_city)||'—'}</div></div>
     </div></div>
     ${j.special?`<div class="panel-section"><div class="panel-section-title">Special Instructions</div><div class="special-box">${esc(j.special)}</div></div>`:''}
-    ${j.dropbox_link?`<div class="panel-section"><a href="${j.dropbox_link}" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.3);border-radius:6px;padding:10px 16px;color:var(--accent);font-family:var(--mono);font-size:12px;text-decoration:none;font-weight:600;">📄 OPEN SOURCE PDF</a></div>`:''}
+    ${j.dropbox_link?`<div class="panel-section"><a class="pdf-btn" href="${j.dropbox_link}" target="_blank">📄 OPEN SOURCE PDF</a></div>`:''}
   `;
   document.getElementById('overlay').classList.add('open');
   document.getElementById('panel').classList.add('open');
